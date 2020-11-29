@@ -1286,282 +1286,7 @@
 		}
 	}
 
-	focus = {
-		id = CZE_go_left
-		icon = GFX_focus_generic_soviet_politics
-		prerequisite = { focus = CZE_political_direction }
-		mutually_exclusive = { focus = CZE_democratic_bastion focus = CZE_go_right }
-		x = -2
-		y = 1
-		relative_position_id = CZE_political_direction
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 30
-			modifier = {
-				factor = 0
-				has_completed_focus = CZE_go_right
-			}
-			modifier = {
-				factor = 0
-				has_completed_focus = CZE_german_leanings
-			}
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_POLITICAL }
-
-		completion_reward = {
-			add_political_power = 120
-			#allow communist reformer
-			# relations changes
-			every_other_country = {
-				limit = { 
-					has_government = communism
-					num_of_factories > 30
-				}
-				add_opinion_modifier = { 
-					target = ROOT 
-					modifier =  FRA_leftist_rhetoric_communism
-				}
-			}
-			every_other_country = {
-				limit = { 
-					has_government = democratic
-					num_of_factories > 30
-				}
-				add_opinion_modifier = { 
-					target = ROOT
-					modifier = FRA_leftist_rhetoric_democratic
-				}
-			}
-			every_other_country = {
-				limit = { 
-					has_government = fascism
-					num_of_factories > 30
-				}
-				add_opinion_modifier = { 
-					target = ROOT 
-					modifier = FRA_leftist_rhetoric_fascism
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = CZE_czech_socialism
-		icon = GFX_focus_generic_soviet_politics
-		prerequisite = { focus = CZE_communist_support }
-		x = -2
-		y = 3
-		relative_position_id = CZE_go_left
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 80
-		}
-
-		available = {
-			
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_STABILITY }
-
-		completion_reward = {
-			if = {
-				limit = { has_idea = CZE_divided_nation }
-				remove_ideas = CZE_divided_nation
-			}
-			add_ideas = CZE_czech_socialism
-			add_political_power = 120
-		}
-	}
-
-	focus = {
-		id = CZE_communism_with_a_human_face
-		icon = GFX_goal_support_communism
-		prerequisite = { focus = CZE_czech_socialism }
-		x = 0
-		y = 1
-		relative_position_id = CZE_czech_socialism
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 50
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_MANPOWER }
-
-		completion_reward = {
-			add_ideas = CZE_communism_with_a_human_face
-		}
-	}
-
-	focus = {
-		id = CZE_communist_support
-		icon = GFX_focus_generic_soviet_politics
-		prerequisite = { focus = CZE_go_left }
-		x = 0
-		y = 1
-		relative_position_id = CZE_go_left
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 80
-		}
-
-		available = {
-			communism > 0.2
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_POLITICAL }
-
-		completion_reward = {
-			add_ideas = communist_influence
-		}
-	}
-
-	focus = {
-		id = CZE_join_comintern
-		icon = GFX_goal_support_communism
-		prerequisite = { focus = CZE_communist_support }
-		x = 0
-		y = 2
-		relative_position_id = CZE_go_left
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 100
-		}
-
-		available = {
-			communism > 0.3
-			SOV = {
-				has_government = communism 
-			}
-			is_in_faction = no
-			NOT = {
-				any_other_country = {
-					is_in_faction_with = SOV
-					has_war_with = CZE
-				}
-			}
-		}
-
-		bypass = {
-			is_in_faction_with = SOV
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-		completion_reward = {
-			SOV = { country_event = { hours = 1 id = czech.1 } }
-		}
-	}
-
-	focus = {
-		id = CZE_the_romanian_question
-		icon = GFX_goal_generic_war_with_comintern
-		prerequisite = { focus = CZE_join_comintern }
-		x = 0
-		y = 3
-		relative_position_id = CZE_go_left
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 80
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-			SOV = { country_event = { hours = 1 id = czech.4 } }
-		}
-	}
-
-	focus = {
-		id = CZE_the_polish_division
-		icon = GFX_goal_generic_war_with_comintern
-		prerequisite = { focus = CZE_the_romanian_question }
-		x = 0
-		y = 4
-		relative_position_id = CZE_go_left
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 80
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-			SOV = { country_event = { hours = 1 id = czech.7 } }
-		}
-	}
+	
 
 	focus = {
 		id = CZE_democratic_bastion
@@ -1616,7 +1341,7 @@
 		}
 
 		available = {
-			democratic > 0.7
+			democratic > 0.69
 		}
 
 		bypass = {
@@ -1702,115 +1427,15 @@
 		}
 	}
 
-	focus = {
-		id = CZE_go_right
-		icon = GFX_focus_generic_strike_at_democracy1
-		prerequisite = { focus = CZE_political_direction }
-		mutually_exclusive = { focus = CZE_democratic_bastion focus = CZE_go_left }
-		x = 2
-		y = 1
-		relative_position_id = CZE_political_direction
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 40
-			modifier = {
-				factor = 3
-				has_completed_focus = CZE_german_leanings
-			}
-			modifier = {
-				factor = 0
-				has_completed_focus = CZE_trust_in_the_west
-			}
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-		completion_reward = {
-			#allow nazi leader
-			every_other_country = {
-				limit = { 
-					has_government = fascism
-					num_of_factories > 30
-				}
-				add_opinion_modifier = { 
-					target = ROOT 
-					modifier =  FRA_right_wing_rhetoric_fascism
-				}
-			}
-			every_other_country = {
-				limit = { 
-					has_government = democratic
-					num_of_factories > 30
-				}
-				add_opinion_modifier = { 
-					target = ROOT
-					modifier = FRA_right_wing_rhetoric_democratic
-				}
-			}
-			every_other_country = {
-				limit = { 
-					has_government = communism
-					num_of_factories > 30
-				}
-				add_opinion_modifier = { 
-					target = ROOT 
-					modifier = FRA_right_wing_rhetoric_communism
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = CZE_czech_fascism
-		icon = GFX_goal_support_fascism
-		prerequisite = { focus = CZE_go_right }
-		x = 0
-		y = 1
-		relative_position_id = CZE_go_right
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 80
-		}
-
-		available = {
-			fascism > 0.35
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_POLITICAL }
-
-		completion_reward = {
-			add_timed_idea = { idea = CZE_czech_fascism days = 1095 }
-		}
-	}
+	
 
 	focus = {
 		id = CZE_aggressive_wars
 		icon = GFX_goal_generic_political_pressure
-		prerequisite = { focus = CZE_czech_fascism focus = CZE_beacon_of_liberty }
-		x = 0
+		prerequisite = { focus = CZE_beacon_of_liberty }
+		x = 3
 		y = 2
-		relative_position_id = CZE_go_right
+		relative_position_id = CZE_beacon_of_liberty
 
 		cost = 5
 
@@ -1836,9 +1461,9 @@
 		id = CZE_the_polish_question
 		icon = GFX_goal_generic_territory_or_war
 		prerequisite = { focus = CZE_aggressive_wars focus = CZE_german_puppet }
-		x = -1
-		y = 4
-		relative_position_id = CZE_go_right
+		x = -2
+		y = -1
+		relative_position_id = CZE_hungarian_situation
 
 		cost = 10
 
@@ -1896,8 +1521,8 @@
 		mutually_exclusive = { focus = CZE_national_fascism  }
 		prerequisite = { focus = CZE_czech_fascism  focus = CZE_beacon_of_liberty}
 		x = 2
-		y = 2
-		relative_position_id = CZE_go_right
+		y = 0
+		relative_position_id = CZE_aggressive_wars
 
 		cost = 5
 
@@ -1936,131 +1561,11 @@
 		}
 	}
 	
-	focus = {
-		id = CZE_national_fascism
-		icon = GFX_goal_generic_propaganda
-		mutually_exclusive = { focus = CZE_exclude_the_slovaks }
-		prerequisite = { focus = CZE_czech_fascism }
-		x = 4
-		y = 2
-		relative_position_id = CZE_go_right
-
-		cost = 15
-
-		ai_will_do = {
-			factor = 40
-			modifier = {
-				factor = 2
-				has_completed_focus = CZE_german_leanings
-			}
-		}
-
-		available = {
-			fascism > 0.6
-			NOT = {
-				has_idea = CZE_divided_nation
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-		completion_reward = {
-			add_ideas = CZE_national_fascism_idea
-		}
-	}
 	
-	focus = {
-		id = CZE_german_minor_ally
-		icon = GFX_goal_generic_dangerous_deal
-		mutually_exclusive = { focus = CZE_german_ally focus = CZE_german_puppet }
-		prerequisite = { focus = CZE_exclude_the_slovaks focus = CZE_national_fascism }
-		x = 4
-		y = 3
-		relative_position_id = CZE_go_right
+	
+	
 
-		cost = 10
 
-		ai_will_do = {
-			factor = 40
-			modifier = {
-				factor = 2
-				has_completed_focus = CZE_german_leanings
-			}
-		}
-
-		available = {
-			is_in_faction = no
-			GER = { has_government = fascism }
-			GER = { exists = yes }
-			GER = { is_subject = no }
-			has_army_manpower = { size > 249999 } 
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-		completion_reward = {
-			custom_effect_tooltip = CZE_german_minor_ally_tt
-			hidden_effect = {
-				GER = {
-					set_autonomy = { target = CZE autonomy_state = autonomy_satellite }
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = CZE_german_ally
-		icon = GFX_goal_generic_military_deal
-		prerequisite = { focus = CZE_exclude_the_slovaks focus = CZE_national_fascism }
-		mutually_exclusive = { focus = CZE_german_puppet focus = CZE_german_minor_ally }
-		x = 2
-		y = 3
-		relative_position_id = CZE_go_right
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 100
-		}
-
-		available = {
-			is_in_faction = no
-			GER = { has_government = fascism }
-			GER = { exists = yes }
-			GER = { is_subject = no }
-			has_army_manpower = { size > 299999 } 
-			NOT = {
-				any_other_country = {
-					is_in_faction_with = GER
-					has_war_with = CZE
-				}
-			}
-		}
-
-		bypass = {
-			is_in_faction_with = GER
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-		completion_reward = {
-			GER = { country_event = { hours = 1 id = czech.16 } }
-		}
-	}
 
 	#######################################
 	######### STRATEGY DECISIONS ##########
@@ -2097,86 +1602,15 @@
 		}
 	}
 
-	focus = {
-		id = CZE_german_leanings
-		icon = GFX_goal_generic_propaganda
-		prerequisite = { focus = CZE_strategy_decisions }
-		mutually_exclusive = { focus = CZE_trust_in_the_west  }
-		x = -2
-		y = 1
-		relative_position_id = CZE_strategy_decisions
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 40
-			modifier = {
-				factor = 0
-				has_completed_focus = CZE_go_left
-			}
-			modifier = {
-				factor = 0
-				has_completed_focus = CZE_democratic_bastion
-			}
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-		completion_reward = {
-			 GER = { add_opinion_modifier = { target = CZE modifier = CZE_german_leanings } }
-		}
-	}
-
-	focus = {
-		id = CZE_german_puppet
-		icon = GFX_focus_CZE_german_puppet
-		prerequisite = { focus = CZE_deliver_sudetenland }
-		mutually_exclusive = { focus = CZE_german_ally focus = CZE_german_minor_ally }
-		x = -2
-		y = 3
-		relative_position_id = CZE_german_leanings
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 90
-		}
-
-		available = {
-			GER = { exists = yes }
-			GER = { is_subject = no }
-		}
-
-		bypass = {
-			is_subject_of = GER
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-		completion_reward = {
-			GER = { country_event = { hours = 1 id = czech.19 } }
-		}
-	}
+	
 
 	focus = {
 		id = CZE_hungarian_situation
 		icon = GFX_goal_generic_territory_or_war
-		prerequisite = { focus = CZE_german_puppet focus = CZE_aggressive_wars }
-		x = -7
-		y = 4
-		relative_position_id = CZE_german_leanings
+		prerequisite = { focus = CZE_aggressive_wars }
+		x = 2
+		y = 2
+		relative_position_id = CZE_aggressive_wars
 		
 		will_lead_to_war_with = HUN
 
@@ -2214,45 +1648,15 @@
 		}
 	}
 
-	focus = {
-		id = CZE_deliver_sudetenland
-		icon = GFX_focus_CZE_german_puppet 
-		prerequisite = { focus = CZE_german_leanings }
-		x = 0
-		y = 1
-		relative_position_id = CZE_german_leanings
 
-		cost = 10
-
-		ai_will_do = {
-			factor = 40
-		}
-
-		available = {
-			GER = { exists = yes }
-			GER = { is_subject = no }
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-			GER = { country_event = { hours = 1 id = czech.22 } }
-		}
-	}
 
 	focus = {
 		id = CZE_german_technology
 		icon = GFX_goal_generic_scientific_exchange
-		prerequisite = { focus = CZE_deliver_sudetenland }
-		x = 0
-		y = 2
-		relative_position_id = CZE_german_leanings
+		prerequisite = { focus = CZE_bonus_research_slot_2 }
+		x = 5
+		y = 1
+		relative_position_id = CZE_bonus_research_slot_2
 
 		cost = 10
 
@@ -2539,7 +1943,7 @@
 		y = 1
 		relative_position_id = CZE_military_research_institute
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 50
@@ -2698,7 +2102,7 @@
 		y = 3
 		relative_position_id = CZE_military_research_institute
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 100
@@ -2808,7 +2212,7 @@
 		y = 2
 		relative_position_id = CZE_military_research_institute
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 50
@@ -3323,7 +2727,7 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			navy_experience = 25
+			navy_experience = 250
 		}
 	}
 

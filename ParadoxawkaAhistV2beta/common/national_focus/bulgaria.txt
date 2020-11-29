@@ -637,7 +637,7 @@ focus_tree = {
 		relative_position_id = BUL_georgi_benkovski_aircraft_repair_facilities
 		x = 0
 		y = 1
-		cost = 10
+		cost = 5
 
 		available = {
 
@@ -720,7 +720,7 @@ focus_tree = {
 		relative_position_id = BUL_negotiate_bulgarian_rearmament
 		x = 0
 		y = 2
-		cost = 10
+		cost = 5
 
 		available = {
 			NOT = { has_idea = BUL_army_restrictions }
