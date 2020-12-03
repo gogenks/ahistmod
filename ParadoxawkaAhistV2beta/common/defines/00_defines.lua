@@ -6,8 +6,8 @@ NGame = {
 	MAP_SCALE_PIXEL_TO_KM = 7.114,					-- Yes, we did the math
 	SAVE_VERSION = 7,								-- 1.8.0
 	CHECKSUM_SALT = "zwOdv5d9wm9uDSOT",				-- Data to modify generated checksum when game binaries have changed but not any content files.
-	LAG_DAYS_FOR_LOWER_SPEED = 10,					-- Days of client lag for decrease of gamespeed
-	LAG_DAYS_FOR_PAUSE = 25,						-- Days of client lag for pause of gamespeed.
+	LAG_DAYS_FOR_LOWER_SPEED = 20,					-- Days of client lag for decrease of gamespeed
+	LAG_DAYS_FOR_PAUSE = 30,						-- Days of client lag for pause of gamespeed.
 	GAME_SPEED_SECONDS = { 2.0, 0.5, 0.2, 0.1, 0.0 }, -- game speeds for each level. Must be 5 entries with last one 0 for unbound
 	MAJOR_PARTICIPANTS_FOR_MAJOR_WAR = 3,			-- Minimum number of major countries involved in a war to consider it major enough to not end the game even though the enddate has been reached.
 	COMBAT_LOG_MAX_MONTHS = 12,
@@ -503,8 +503,8 @@ NProduction = {
 	MIN_LICENSE_ACTIVE_DAYS = 30,						-- Min days for license to be active
 	BASE_LICENSE_IC_COST = 1,							-- Base IC cost for lended license
 	LICENSE_IC_COST_YEAR_INCREASE = 1,					-- IC cost equipment for every year of equipment after 1936
-	LICENSE_EQUIPMENT_BASE_SPEED = -0.25,				-- base MIC speed modifier for licensed equipment
-	LICENSE_EQUIPMENT_TECH_SPEED_PER_YEAR = -0.05,		-- MIC speed modifier for licensed equipment for each year of difference between actual and latest equipment
+	LICENSE_EQUIPMENT_BASE_SPEED = -0.1,				-- base MIC speed modifier for licensed equipment
+	LICENSE_EQUIPMENT_TECH_SPEED_PER_YEAR = -0.04,		-- MIC speed modifier for licensed equipment for each year of difference between actual and latest equipment
 	LICENSE_EQUIPMENT_TECH_SPEED_MAX_YEARS = 4,			-- Maximum years for MIC speed modifier
 	LICENSE_EQUIPMENT_SPEED_NOT_FACTION = -0.10,		-- MIC speed modifier for licensed equipment for not being in faction
 	LICENSE_EQUIPMENT_UPGRADE_XP_FACTOR = 2.0,			-- XP cost for upgrading licensed equipment
@@ -526,10 +526,10 @@ NTechnology = {
 	BASE_YEAR_AHEAD_PENALTY_FACTOR = 2,		-- Base year ahead penalty
 	BASE_TECH_COST = 85,					-- Base cost for a tech. multiplied with tech cost and ahead of time penalties
 	MAX_TECH_SHARING_BONUS = 0.5, 			-- Max technology sharing bonus that can be applied instantly
-	LICENSE_PRODUCTION_TECH_BONUS = 0.2,	-- License production tech bonus
+	LICENSE_PRODUCTION_TECH_BONUS = 0.25,	-- License production tech bonus
 	
-	DEFAULT_XP_RESEARCH_COST = 100,			-- default xp cost of a research to speed up the process
-	DEFAULT_XP_RESEARCH_BONUS = 1.0,		-- default research bonus gained when xp is used to research an item
+	DEFAULT_XP_RESEARCH_COST = 50,			-- default xp cost of a research to speed up the process
+	DEFAULT_XP_RESEARCH_BONUS = 0.6,		-- default research bonus gained when xp is used to research an item
 	MIN_RESEARCH_SPEED = 0.1,				-- research speed can't go below this value
 },
 
@@ -564,7 +564,7 @@ NBuildings = {
 	SUPPLY_PORT_LEVEL_THROUGHPUT = 3,   -- supply throughput per level of naval base
 	INFRA_TO_SUPPLY = 2,
  	INFRA_TO_SUPPLY_COEFF = 1,
-	MAX_SHARED_SLOTS = 25,				-- Max slots shared by factories
+	MAX_SHARED_SLOTS = 50,				-- Max slots shared by factories
 	OWNER_CHANGE_EXTRA_SHARED_SLOTS_FACTOR = 0.5, --Scale factor of extra shared slots when state owner change.
 	DESTRUCTION_COOLDOWN_IN_WAR = 30,	-- Number of days cooldown between removal of buildings in war times
 	
@@ -607,13 +607,13 @@ NMilitary = {
 	MAX_DIVISION_SUPPORT_WIDTH = 1,			-- Max width of support in division designer.
 	MAX_DIVISION_SUPPORT_HEIGHT = 5,		-- Max height of support in division designer.
 	
-	BASE_DIVISION_BRIGADE_GROUP_COST = 20, 	--Base cost to unlock a regiment slot,
-	BASE_DIVISION_BRIGADE_CHANGE_COST = 5,	--Base cost to change a regiment column.
-	BASE_DIVISION_SUPPORT_SLOT_COST = 10, 	--Base cost to unlock a support slot
+	BASE_DIVISION_BRIGADE_GROUP_COST = 8, 	--Base cost to unlock a regiment slot,
+	BASE_DIVISION_BRIGADE_CHANGE_COST = 4,	--Base cost to change a regiment column.
+	BASE_DIVISION_SUPPORT_SLOT_COST = 6, 	--Base cost to unlock a support slot
 	
-	MAX_ARMY_EXPERIENCE = 500,			--Max army experience a country can store
-	MAX_NAVY_EXPERIENCE = 500,			--Max navy experience a country can store
-	MAX_AIR_EXPERIENCE = 500,				--Max air experience a country can store
+	MAX_ARMY_EXPERIENCE = 1000,			--Max army experience a country can store
+	MAX_NAVY_EXPERIENCE = 1000,			--Max navy experience a country can store
+	MAX_AIR_EXPERIENCE = 1000,				--Max air experience a country can store
 	
 	COMBAT_MINIMUM_TIME = 4,			-- Shortest time possible for a combat in hours
 	SPOTTING_QUALITY_DROP_HOURS = 4, 	-- Each X hours the intel quality drops after unit was spotted.
@@ -628,10 +628,10 @@ NMilitary = {
 	LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.04,    -- air global damage modifier
 	LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.04,    -- global damage modifier
 	LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 3, -- how many CAS/TAC can enter a combat depending on enemy width there
-	LAND_COMBAT_STR_ARMOR_ON_SOFT_DICE_SIZE = 2,   -- extra damage dice if our armor outclasses enemy
-	LAND_COMBAT_ORG_ARMOR_ON_SOFT_DICE_SIZE = 6,   -- extra damage dice if our armor outclasses enemy
-	LAND_COMBAT_STR_ARMOR_DEFLECTION_FACTOR = 0.5, -- damage reduction if armor outclassing enemy
-	LAND_COMBAT_ORG_ARMOR_DEFLECTION_FACTOR = 0.5, -- damage reduction if armor outclassing enemy
+	LAND_COMBAT_STR_ARMOR_ON_SOFT_DICE_SIZE = 1,   -- extra damage dice if our armor outclasses enemy
+	LAND_COMBAT_ORG_ARMOR_ON_SOFT_DICE_SIZE = 3,   -- extra damage dice if our armor outclasses enemy
+	LAND_COMBAT_STR_ARMOR_DEFLECTION_FACTOR = 0.6, -- damage reduction if armor outclassing enemy
+	LAND_COMBAT_ORG_ARMOR_DEFLECTION_FACTOR = 0.6, -- damage reduction if armor outclassing enemy
 	LAND_COMBAT_COLLATERAL_FACTOR = 0.005,		   -- Factor to scale collateral damage to infra and forts with.
 	LAND_COMBAT_FORT_DAMAGE_CHANCE = 5,		-- chance to get a hit to damage on forts. (out of 100)
 	ATTRITION_DAMAGE_ORG = 0.1,					   -- damage from attrition to Organisation
@@ -710,7 +710,7 @@ NMilitary = {
 	PARACHUTE_ORG_REGAIN_PENALTY_DURATION = 120,   -- penalty in org regain after being parachuted. Value is in hours.
 	PARACHUTE_ORG_REGAIN_PENALTY_MULT = -0.8,	   -- penalty to org regain after being parachuted.
 	SHIP_MORALE_TO_ORG_REGAIN_BASE = 0.2,			   -- Base org regain per hour
-	BASE_NIGHT_ATTACK_PENALTY = -0.5,
+	BASE_NIGHT_ATTACK_PENALTY = -0.55,
 	EXILE_EQUIPMENT = 1.0,						   -- Amount of equipment to keep
 	EXILE_ORG = 0.0,							   -- Amount of org to keep
 	EXPERIENCE_LOSS_FACTOR = 1.00,                 -- percentage of experienced solders who die when manpower is removed
@@ -739,7 +739,7 @@ NMilitary = {
 	LOW_ORG_FOR_ATTACK = 0.5,                      -- at what org % we start affecting speed when doign hostile moves. scales down ZERO_ORG_MOVEMENT_MODIFIER
 
 	PLANNING_DECAY = 0.01,
-	PLAYER_ORDER_PLANNING_DECAY = 0.03,				-- Amount of planning lost due to player manual order
+	PLAYER_ORDER_PLANNING_DECAY = 0.01,				-- Amount of planning lost due to player manual order
 	PLANNING_GAIN = 0.02,
 	PLANNING_MAX = 0.3,                           	-- can get more from techs
 	CIVILWAR_ORGANIZATION_FACTOR = 0.3,			  	-- Multiplier of org for both sides when civilwar.	
@@ -814,13 +814,13 @@ NMilitary = {
 	BATALION_NOT_CHANGED_EXPERIENCE_DROP = 0.0,		-- Division experience drop if unit has same batalion
 	BATALION_CHANGED_EXPERIENCE_DROP = 0.5,			-- Division experience drop if unit has different batalion
 	ARMOR_VS_AVERAGE = 0.3,			                -- how to weight in highest armor & pen vs the division average
-	PEN_VS_AVERAGE = 0.4,
+	PEN_VS_AVERAGE = 0.5,
 
-	LAND_EQUIPMENT_BASE_COST = 10,					-- Cost in XP to upgrade a piece of equipment one level is base + ( total levels * ramp )
-	LAND_EQUIPMENT_RAMP_COST = 5,					
-	NAVAL_EQUIPMENT_BASE_COST = 25,
+	LAND_EQUIPMENT_BASE_COST = 5,					-- Cost in XP to upgrade a piece of equipment one level is base + ( total levels * ramp )
+	LAND_EQUIPMENT_RAMP_COST = 4,					
+	NAVAL_EQUIPMENT_BASE_COST = 20,
 	NAVAL_EQUIPMENT_RAMP_COST = 5,
-	AIR_EQUIPMENT_BASE_COST = 25,
+	AIR_EQUIPMENT_BASE_COST = 20,
 	AIR_EQUIPMENT_RAMP_COST = 5,
 	
 	FASTER_ORG_REGAIN_LEVEL = 0.25,
@@ -831,7 +831,7 @@ NMilitary = {
 	DISBAND_MANPOWER_LOSS = 0.0,
 	MIN_DIVISION_DEPLOYMENT_TRAINING = 0.2,			-- Min level of division training
 	
-	FRONT_MIN_PATH_TO_REDEPLOY = 8,					-- If a units path is at least this long to reach its front location, it will strategically redeploy.
+	FRONT_MIN_PATH_TO_REDEPLOY = 5,					-- If a units path is at least this long to reach its front location, it will strategically redeploy.
 	ARMY_INITIATIVE_REINFORCE_FACTOR = 0.25,		-- scales initiative for reinforce chance
 	
 	BASE_CAPTURE_EQUIPMENT_RATIO = 0.0,				-- after a successful land combat, ratio of the equipments that are being captured/salvaged from enemy's lost equipment
@@ -845,7 +845,7 @@ NMilitary = {
 	
 	FIELD_MARSHAL_ARMY_BONUS_RATIO = 0.5,           -- ratio to apply regular bonuses FM bonuses to armies
 	
-	FIELD_MARSHAL_XP_RATIO = 0.25,					-- xp gain ratio for army group leaders
+	FIELD_MARSHAL_XP_RATIO = 0.5,					-- xp gain ratio for army group leaders
 	
 	GARRISON_ORDER_ARMY_CAP_FACTOR = 3.0,			-- armies gets increased cap when they are garrisoned
 	
@@ -900,7 +900,7 @@ NMilitary = {
 	NEW_NAVY_LEADER_RANDOM_SKILL_CHANCES = { -- chances to give a random stat skill point for a new admiral
 	},
 	
-	UNIT_LEADER_MODIFIER_COOLDOWN_ON_GROUP_CHANGE = 15,		-- time in days for a unit leader to regain its modifiers
+	UNIT_LEADER_MODIFIER_COOLDOWN_ON_GROUP_CHANGE = 10,		-- time in days for a unit leader to regain its modifiers
 	UNIT_LEADER_ASSIGN_TRAIT_COST = 15.0,					-- cost to assign a new trait to a unit leader
 	ATTACHED_WINGS_ORDER_UPDATE_DAYS = 5,					-- Days untill the attached wing will update the order
 	
